@@ -15,9 +15,10 @@ public class BffSecurityConfiguration {
 
 	@Bean
 	SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, ReactiveClientRegistrationRepository clientRegistrationRepository) {
+
 		DefaultServerOAuth2AuthorizationRequestResolver pkceResolver = new DefaultServerOAuth2AuthorizationRequestResolver(clientRegistrationRepository);
 		pkceResolver.setAuthorizationRequestCustomizer(OAuth2AuthorizationRequestCustomizers.withPkce());
-		// @formatter:off
+
 		http
 				.headers(headers -> headers
 						.contentSecurityPolicy("script-src 'self'")
@@ -31,7 +32,7 @@ public class BffSecurityConfiguration {
 				.csrf((csrf) -> csrf
 						.csrfTokenRepository(CookieServerCsrfTokenRepository.withHttpOnlyFalse())
 				);
-		// @formatter:on
+
 		return http.build();
 	}
 

@@ -1,0 +1,10 @@
+{
+  "/gateway": {
+    "target": "http://gateway:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/gateway": ""
+    }
+  }
+}

@@ -29,7 +29,8 @@ spring:
           filters:
             - TokenRelay=
         - id: default
-          uri: http://127.0.0.1:4200
+          uri: http://frontend:4200
           predicates:
             - Path=/**
-
+          filters:
+            - TokenRelay=

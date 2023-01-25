@@ -1,16 +1,19 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
-import {ApiInterceptor} from "./api.interceptor";
-import {InboxComponent} from './inbox/inbox.component';
-import {EmailViewComponent} from './email-view/email-view.component';
-import {EmailComposeComponent} from './email-compose/email-compose.component';
-import {CommonModule} from '@angular/common';
-import {NoSanitizePipe} from "./email-view/no-sanitize.pipe";
+import { NgModule } from "@angular/core";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+  HttpClientXsrfModule,
+} from "@angular/common/http";
+import { ReactiveFormsModule } from "@angular/forms";
+import { ApiInterceptor } from "./api.interceptor";
+import { InboxComponent } from "./inbox/inbox.component";
+import { EmailViewComponent } from "./email-view/email-view.component";
+import { EmailComposeComponent } from "./email-compose/email-compose.component";
+import { CommonModule } from "@angular/common";
+import { NoSanitizePipe } from "./email-view/no-sanitize.pipe";
 
 @NgModule({
   declarations: [
@@ -18,7 +21,7 @@ import {NoSanitizePipe} from "./email-view/no-sanitize.pipe";
     InboxComponent,
     EmailViewComponent,
     EmailComposeComponent,
-    NoSanitizePipe
+    NoSanitizePipe,
   ],
   imports: [
     CommonModule,
@@ -26,11 +29,12 @@ import {NoSanitizePipe} from "./email-view/no-sanitize.pipe";
     AppRoutingModule,
     HttpClientModule,
     HttpClientXsrfModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
